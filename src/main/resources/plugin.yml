@@ -1,0 +1,4 @@
+name: stats
+version: '${project.version}'
+main: de.base2code.stats.Stats
+api-version: '1.20'
