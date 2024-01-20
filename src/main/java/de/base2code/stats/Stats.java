@@ -1,5 +1,6 @@
 package de.base2code.stats;
 
+import de.base2code.stats.converter.ConverterManager;
 import de.base2code.stats.listener.BlockListener;
 import de.base2code.stats.listener.PlayerListener;
 import de.base2code.stats.manager.FileManager;
@@ -16,6 +17,8 @@ public final class Stats extends JavaPlugin {
 
     private FileManager fileManager;
 
+    private ConverterManager converterManager;
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -24,6 +27,9 @@ public final class Stats extends JavaPlugin {
         if (!getDataFolder().exists()) {
             getDataFolder().mkdir();
         }
+
+        converterManager = new ConverterManager();
+        converterManager.fillList();
 
         try {
             fileManager = new FileManager(new File(getDataFolder(), "stats.yml"));
@@ -48,5 +54,9 @@ public final class Stats extends JavaPlugin {
 
     public FileManager getFileManager() {
         return fileManager;
+    }
+
+    public ConverterManager getConverterManager() {
+        return converterManager;
     }
 }

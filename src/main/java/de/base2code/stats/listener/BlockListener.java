@@ -9,12 +9,12 @@ import org.bukkit.event.block.BlockPlaceEvent;
 public class BlockListener implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        Utils.eventFire(event);
+        Utils.eventFire(event, event.getPlayer(), event.getBlock(), event.getExpToDrop());
     }
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        Utils.eventFire(event);
+        Utils.eventFire(event, event.getPlayer(), event.getBlock(), event.getBlockPlaced(), event.getItemInHand());
     }
 
 }
